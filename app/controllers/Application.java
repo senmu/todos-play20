@@ -20,12 +20,12 @@ public class Application extends Controller {
 	}
 	
 	public static Result update(Long id) {
-		TodoItem.update(id, form().bindFromRequest().get("title"), Boolean.valueOf(form().bindFromRequest().get("done")));
+		TodoItem.update(id, Form.form().bindFromRequest().get("title"), Boolean.valueOf(Form.form().bindFromRequest().get("done")));
 		return ok();
 	}
 	
 	public static Result add() {
-		Form<TodoItem> todoForm = form(TodoItem.class).bindFromRequest();
+		Form<TodoItem> todoForm = Form.form(TodoItem.class).bindFromRequest();
 		if (todoForm.hasErrors()) {
 			return badRequest();
 		} else {
